@@ -1,0 +1,36 @@
+name: ASP.NET Framework CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup .NET 
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '5.0.x' # your version is using.
+
+    - name: setup-msbuild
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: msbuild src\Demo_GitHub.csproj -t:rebuild -verbosity:diag -property:Configuration=Release
+
+    - name: Run tests
+      run: dotnet test --no-restore --verbosity normal --configuration Release
+
+  
