@@ -39,6 +39,6 @@ jobs:
       run: dotnet restore
 
     - name: Build
-      run: msbuild Demo_GitHub -t:rebuild -verbosity:diag -property:Configuration=Release
+      run: dotnet build Demo_GitHub --configuration Release --no-restore
 
   
