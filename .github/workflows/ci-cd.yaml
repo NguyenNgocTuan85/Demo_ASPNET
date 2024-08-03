@@ -24,8 +24,9 @@ jobs:
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v2
 
-    - name: list
-      run: dir
+    - name: Install .NET Framework 4.5 Developer Pack
+      run: |
+        choco install netfx-4.5.2-devpack
     
     - name: Restore dependencies
       run: dotnet restore
