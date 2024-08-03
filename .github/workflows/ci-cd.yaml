@@ -24,6 +24,9 @@ jobs:
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v2
 
+    - name: list
+      run: dir
+    
     - name: Restore dependencies
       run: dotnet restore
 
