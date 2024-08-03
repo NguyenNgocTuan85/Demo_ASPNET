@@ -16,9 +16,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-
-    
-
     - name: Verify .NET Framework Installation
       run: |
         $installed = Get-ChildItem "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1"
@@ -29,6 +26,14 @@ jobs:
             Write-Host ".NET Framework 4.5.1 Developer Pack installed successfully."
             exit 0 
         }
+
+    - name: Setup .NET 
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '5.0.x' # your version is using.
+
+    - name: setup-msbuild
+      uses: microsoft/setup-msbuild@v2
 
     - name: Restore dependencies
       run: dotnet restore
