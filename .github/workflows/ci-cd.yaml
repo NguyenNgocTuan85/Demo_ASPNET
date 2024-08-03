@@ -32,7 +32,7 @@ jobs:
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v2
       with:
-        msbuild-version: '16.0'
+        msbuild-version: '15.0'
 
 
     - name: Restore dependencies
