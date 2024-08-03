@@ -39,6 +39,6 @@ jobs:
       run: dotnet restore
 
     - name: Build
-      run: msbuild Demo_GitHub.csproj /p:Configuration=Release
+      run: msbuild Demo_GitHub /p:Configuration=Release
 
   
