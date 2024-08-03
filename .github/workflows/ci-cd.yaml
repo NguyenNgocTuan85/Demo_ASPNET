@@ -17,12 +17,9 @@ jobs:
       uses: actions/checkout@v2
       
     
-    - name: Install Visual Studio 2019 Build Tools
-      run: |
-        Invoke-WebRequest -Uri https://aka.ms/vs/16/release/vs_buildtools.exe -OutFile vs_buildtools.exe
-        Start-Process -FilePath .\vs_buildtools.exe -ArgumentList '--quiet --norestart --wait --includeRecommended --includeOptional' -NoNewWindow -Wait
-
-     
+    run: |
+        cd "C:\Program Files (x86)\MSBuild"
+        dir
 
 
   
