@@ -20,6 +20,10 @@ jobs:
       uses: microsoft/setup-msbuild@v2
       with:
         vs-version: '16.0'
+    - name: Install Visual Studio Build Tools 2019
+      run: |
+        choco install visualstudio2019buildtools --package-parameters "--allWorkloads --includeRecommended --includeOptional" -y
+
      
     - name: List all MSBuild installations
       run: |
