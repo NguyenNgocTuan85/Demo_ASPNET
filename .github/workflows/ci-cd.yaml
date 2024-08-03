@@ -23,7 +23,7 @@ jobs:
           dir
 
       - name: Build
-        run: msbuild Demo_ASPNET/Demo_GitHub.sln -t:rebuild -verbosity:diag -property:Configuration=Release
+        run: msbuild Demo_GitHub/Demo_GitHub.csproj -t:rebuild -verbosity:diag -property:Configuration=Release
         
 
   
