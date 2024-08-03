@@ -19,14 +19,13 @@ jobs:
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v2
       with:
-        vs-version: '16.4'
-        vs-prerelease: true
-      
+       vs-version: '[16.4,16.5)'
+     
 
     - name: Check MSBuild version
       run: msbuild -version
 
     - name: Build
-      run: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Current\\Bin\\MSBuild.exe Demo_GitHub.sln /p:Configuration=Release"
+      run: msbuild Demo_GitHub -t:rebuild -verbosity:diag -property:Configuration=Release
 
   
