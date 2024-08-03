@@ -15,21 +15,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
-    - name: setup-msbuild
-      uses: microsoft/setup-msbuild@v2
-      with:
-        vs-version: '16.11.38'
-    - name: setup-msbuild
+      
+    - name: Checkout code
       run: |
-        cd "C:\Program Files (x86)\MSBuild"
+        cd "C:\Program Files (x86)\MSBuild\Microsoft"
         dir
      
-    - name: List all MSBuild installations
-      run: |
-        $msbuildPaths = &"C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" -products * -requires Microsoft.Component.MSBuild -property installationPath -all
-        foreach ($path in $msbuildPaths) {
-          Write-Host "Found MSBuild at $path"
-        }
+
 
   
