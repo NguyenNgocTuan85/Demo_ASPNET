@@ -24,9 +24,14 @@ jobs:
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v2
 
-    - name: Install .NET Framework 4.5 Developer Pack
+    - name: Install Chocolatey
       run: |
-        choco install netfx-4.5.2-devpack
+        Set-ExecutionPolicy Bypass -Scope Process -Force;
+        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+        iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+    - name: Install .NET Framework 4.5 Developer Pack
+      run: choco install netfx-4.5.2-devpack -y
     
     - name: Restore dependencies
       run: dotnet restore
