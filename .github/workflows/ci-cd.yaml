@@ -21,6 +21,13 @@ jobs:
       with:
         vs-version: '16.4'
         vs-prerelease: true
+        
+    - name: Find MSBuild 16.x
+      id: msbuild
+      run: |
+        $msbuildPath = &"C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" -products * -requires Microsoft.Component.MSBuild -version '[16.0,17.0)' -property installationPath -latest
+        echo "##[set-output name=msbuild16;]$msbuildPath"
+      
 
     - name: Check MSBuild version
       run: msbuild -version
