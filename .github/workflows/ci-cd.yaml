@@ -20,6 +20,7 @@ jobs:
       uses: microsoft/setup-msbuild@v2
       with:
         vs-version: '16.4'
+        vs-prerelease: true
 
     - name: Check MSBuild version
       run: msbuild -version
