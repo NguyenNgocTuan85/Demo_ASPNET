@@ -36,7 +36,7 @@ jobs:
 
     - name: Find MSBuild version
       run: |
-        C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe -products * -requires Microsoft.Component.MSBuild -property installationPath -latest
+        "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" -products * -requires Microsoft.Component.MSBuild -property installationPath -latest
 
     - name: Restore dependencies
       run: dotnet restore
