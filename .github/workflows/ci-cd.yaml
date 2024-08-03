@@ -38,6 +38,9 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
 
+    - name: Check MSBuild version
+      run: msbuild -version
+
     - name: Build
       run: msbuild Demo_GitHub /p:Configuration=Release
 
