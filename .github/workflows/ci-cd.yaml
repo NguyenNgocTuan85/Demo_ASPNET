@@ -19,7 +19,7 @@ jobs:
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v2
       with:
-        vs-version: '[16.4,16.5)'
+        vs-version: '[16.1,16.5)'
      
 
     - name: Check MSBuild version
