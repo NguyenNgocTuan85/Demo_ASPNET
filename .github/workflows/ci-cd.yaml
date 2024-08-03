@@ -10,21 +10,39 @@ on:
 
 jobs:
   build:
-    runs-on: windows-2019
+    runs-on: windows-latest
 
     steps:
-      - name: setup-msbuild
-        uses: microsoft/setup-msbuild@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Chocolatey
+      run: |
+        Set-ExecutionPolicy Bypass -Scope Process -Force;
+        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+        iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+    - name: Install .NET Framework 4.5 Developer Pack (64-bit)
+      run: choco install netfx-4.5.1-devpack -y
+
+    - name: Setup .NET 
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '5.0.x' # your version is using.
+
+    - name: setup-msbuild
+      uses: microsoft/setup-msbuild@v2
 
     
-      - name: folder
-        run: |
-          cd "C:\Program Files (x86)\Microsoft Visual Studio"
-          dir
+    
+    - name: Restore dependencies
+      run: dotnet restore
 
-      - name: Build
-        run: msbuild Demo_GitHub/Demo_GitHub.csproj /p:Configuration=Release
-        
+    - name: Build
+      run: msbuild Demo_GitHub -t:rebuild -verbosity:diag -property:Configuration=Release
+
+    - name: Run tests
+      run: dotnet test --no-restore --verbosity normal --configuration Release
         
 
   
