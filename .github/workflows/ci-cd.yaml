@@ -25,6 +25,8 @@ jobs:
       run: |
         cd "C:\Program Files (x86)\MSBuild"
         dir
-
+    - name: Build with MSBuild
+      run: |
+        "C:\\Program Files (x86)\\MSBuild\\15.0\\Bin\\msbuild.exe" Demo_GitHub.sln  /p:Configuration=Release
 
   
