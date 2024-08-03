@@ -23,7 +23,9 @@ jobs:
      
     - name: List all MSBuild installations
       run: |
-        "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" -products * -requires Microsoft.Component.MSBuild -property installationPath -all
-
+        $msbuildPaths = &"C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" -products * -requires Microsoft.Component.MSBuild -property installationPath -all
+        foreach ($path in $msbuildPaths) {
+          Write-Host "Found MSBuild at $path"
+        }
 
   
