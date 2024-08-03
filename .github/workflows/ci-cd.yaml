@@ -21,11 +21,9 @@ jobs:
       with:
         vs-version: '16.0'
      
+    - name: List all MSBuild installations
+      run: |
+        "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" -products * -requires Microsoft.Component.MSBuild -property installationPath -all
 
-    - name: Check MSBuild version
-      run: msbuild -version
-
-    - name: Build
-      run: msbuild Demo_GitHub -t:rebuild -verbosity:diag -property:Configuration=Release
 
   
