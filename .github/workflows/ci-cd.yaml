@@ -16,6 +16,15 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Install Chocolatey
+      run: |
+        Set-ExecutionPolicy Bypass -Scope Process -Force;
+        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+        iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+    - name: Install .NET Framework 4.5 Developer Pack
+      run: choco install netfx-4.5-devpack -y
+
     - name: Setup .NET 
       uses: actions/setup-dotnet@v2
       with:
@@ -24,14 +33,7 @@ jobs:
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v2
 
-    - name: Install Chocolatey
-      run: |
-        Set-ExecutionPolicy Bypass -Scope Process -Force;
-        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
-        iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-
-    - name: Install .NET Framework 4.5 Developer Pack
-      run: choco install netfx-4.5.1-devpack -y
+    
     
     - name: Restore dependencies
       run: dotnet restore
