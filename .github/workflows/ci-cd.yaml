@@ -10,24 +10,13 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2019
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up MSBuild
-      uses: microsoft/setup-msbuild@v2
-      with:
-        msbuild-version: '17.0'
-      
     - name: version.
       run: |
-        cd "C:\Program Files (x86)\MSBuild"
+        cd "C:\Program Files (x86)\Microsoft Visual Studio"
         dir
-    - name: Build with MSBuild
-      run: |
-        msbuild Demo_GitHub -property:Configuration=Release
+
         
 
   
