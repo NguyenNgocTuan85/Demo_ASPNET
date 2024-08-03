@@ -31,7 +31,7 @@ jobs:
         iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
     - name: Install .NET Framework 4.5 Developer Pack
-      run: choco install netfx-4.5.2-devpack -y
+      run: choco install netfx-4.5.1-devpack -y
     
     - name: Restore dependencies
       run: dotnet restore
