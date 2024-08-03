@@ -13,17 +13,24 @@ jobs:
     runs-on: windows-2019
 
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Chocolatey
+      run: |
+        Set-ExecutionPolicy Bypass -Scope Process -Force;
+        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+        iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v2
-      with:
-        vs-version: '2019'
 
+    - name: Restore NuGet packages
+      run: nuget restore 
     
-    - name: Restore dependencies
+    - name: Build
+      run: msbuild Demo_GitHub -t:rebuild -verbosity:diag -property:Configuration=Release ./output /p:PublishProfile=C:/GitHub-Runner/YourPublishProfile.pubxml
+    - name: Check
       run: |
-          cd "C:\Program Files (x86)\Microsoft Visual Studio\2019"
-          dir
-        
-
-  
+        cd "C:\GitHub-Runner"
+        dir
