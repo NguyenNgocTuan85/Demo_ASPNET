@@ -27,6 +27,7 @@ jobs:
         dir
     - name: Build with MSBuild
       run: |
-        C:\\Program Files (x86)\\MSBuild\\15.0\\Bin\\msbuild.exe Demo_GitHub  /p:Configuration=Release
+        msbuild Demo_GitHub -property:Configuration=Release
+        
 
   
