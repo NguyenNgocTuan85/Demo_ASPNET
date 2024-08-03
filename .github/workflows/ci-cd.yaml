@@ -15,25 +15,11 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
-    - name: Install Chocolatey
+   
+    - name: Checkout code
       run: |
-        Set-ExecutionPolicy Bypass -Scope Process -Force;
-        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
-        iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-
-    - name: setup-msbuild
-      uses: microsoft/setup-msbuild@v2
-
-    - name: Restore NuGet packages
-      run: nuget restore 
-    
-    - name: Build
-      run: msbuild Demo_GitHub -t:rebuild -verbosity:diag -property:Configuration=Release
-
-    - name: Run tests
-      run: |
-        vstest.console.exe "Demo_GitHub\Demo_GitHub.dll" /Platform:x64 /Framework:.NETFramework,Version=v4.5
+        cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\<Edition>\Common7\IDE\PublicAssemblies"
+        dir
         
 
   
