@@ -32,7 +32,8 @@ jobs:
       run: msbuild Demo_GitHub -t:rebuild -verbosity:diag -property:Configuration=Release
 
     - name: Run tests
-      run: vstest.console.exe "Demo_GitHub\Demo_GitHub.dll" /Platform:x64 /Framework:.NETFramework,Version=v4.5
+      run: |
+        vstest.console.exe "Demo_GitHub\Demo_GitHub.dll" /Platform:x64 /Framework:.NETFramework,Version=v4.5
         
 
   
