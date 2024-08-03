@@ -10,10 +10,14 @@ on:
 
 jobs:
   build:
-    runs-on: windows-2022
+    runs-on: windows-2019
 
     steps:
-      - name: Install Chocolatey
+      - name: setup-msbuild
+        uses: microsoft/setup-msbuild@v2
+
+    
+      - name: folder
         run: |
           cd "C:\Program Files (x86)\Microsoft Visual Studio"
           dir
