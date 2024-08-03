@@ -19,7 +19,7 @@ jobs:
     - name: Set up MSBuild
       uses: microsoft/setup-msbuild@v2
       with:
-        msbuild-version: '16.0'
+        msbuild-version: '17.0'
       
     - name: version.
       run: |
