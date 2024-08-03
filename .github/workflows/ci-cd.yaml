@@ -29,7 +29,7 @@ jobs:
       run: nuget restore 
     
     - name: Build
-      run: msbuild Demo_GitHub -t:rebuild -verbosity:diag -property:Configuration=Release ./output /p:PublishProfile=C:/GitHub-Runner/YourPublishProfile.pubxml
+      run: msbuild Demo_GitHub -t:rebuild -verbosity:diag -property:Configuration=Release -property:PublishProfile=C:/GitHub-Runner/YourPublishProfile.pubxml -property:OutputPath=C:/GitHub-Runner
     - name: Check
       run: |
         cd "C:\GitHub-Runner"
