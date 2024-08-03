@@ -23,7 +23,7 @@ jobs:
           dir
 
       - name: Build
-        run: msbuild Demo_GitHub /p:Configuration=Release
+        run: msbuild Demo_GitHub/Demo_GitHub.csproj /p:Configuration=Release
         
         
 
