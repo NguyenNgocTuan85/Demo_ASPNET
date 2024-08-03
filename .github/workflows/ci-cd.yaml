@@ -17,6 +17,7 @@ jobs:
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v2
       with:
+        vs-version: '2019'
         include-components: 'Microsoft.VisualStudio.Component.TestTools.BuildTools'
 
     
