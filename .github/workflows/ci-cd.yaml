@@ -16,9 +16,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install Visual Studio 2019 Build Tools
-      run: choco install visualstudio2019buildtools --package-parameters "--allWorkloads --includeRecommended --includeOptional" -y
-
+    - name: Set up MSBuild
+      uses: microsoft/setup-msbuild@v2
+      with:
+        msbuild-version: '16.0'
       
     - name: version.
       run: |
